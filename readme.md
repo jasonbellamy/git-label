@@ -53,7 +53,7 @@ response | `string`   | `<required>` | success message.
 
 ## Developing
 
-[git-label-core](https://github.com/git-label-core) is built using **ES6**. Run the following task to compile the `src/` into `dist/`.
+[git-label](https://github.com/git-label) is built using **ES6**. Run the following task to compile the `src/` into `dist/`.
 
 ```bash
 npm run build
