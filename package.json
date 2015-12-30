@@ -1,0 +1,50 @@
+{
+  "name": "git-label",
+  "description": "Automates and simplifies the creation of labels for GitHub repositories",
+  "version": "1.0.0",
+  "homepage": "https://github.com/git-label",
+  "author": {
+    "name": "Jason Bellamy",
+    "email": "j@sonbellamy.com",
+    "url": "http://jasonbellamy.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/git-label/git-label.git"
+  },
+  "bugs": {
+    "url": "https://github.com/git-label/git-label/issues"
+  },
+  "license": "MIT",
+  "main": "dist/index",
+  "engines": {
+    "node": ">= 4.0.0"
+  },
+  "scripts": {
+    "build": "babel -d dist src",
+    "clean": "rm -rf dist && mkdir dist",
+    "watch": "babel -w -d dist src",
+    "test": "mocha test --recursive --require babel-core/register",
+    "preversion": "npm run clean && npm run build",
+    "postpublish": "git push && git push --tag"
+  },
+  "dependencies": {
+    "lineder": "^0.1.1",
+    "request": "^2.67.0"
+  },
+  "devDependencies": {
+    "babel": "^6.1.18",
+    "babel-cli": "^6.3.17",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-register": "^6.2.0",
+    "chai": "^3.2.0",
+    "chai-as-promised": "^5.1.0",
+    "mocha": "^2.3.0"
+  },
+  "keywords": [
+    "labels",
+    "github",
+    "git",
+    "utils"
+  ]
+}
