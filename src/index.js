@@ -14,20 +14,13 @@ import {successMessage, errorMessage} from './lib/message';
  * @param {String} server.token the api token to use
  * @param {String} server.repo the git repo to manipulate
  * @param {Array} packages array of paths to package files
- * @param {Function} cb callback
+ * @return {Promise}
  */
-function gitLabel(server, packages, cb) {
-  return configure(server)
-    .then((server) => {
-      return getPackages(packages)
-        .then(createLabels.bind(null, server))
-        .then((message) => {
-          cb(null, successMessage(message));
-        })
-    })
-    .catch((message) => {
-      cb(errorMessage(message));
-    });
+function gitLabel(server, packages) {
+  return getPackages(packages)
+    .then(createLabels.bind(null, configure(server)))
+    .then(successMessage)
+    .catch(errorMessage);
 }
 
 

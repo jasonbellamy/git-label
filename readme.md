@@ -22,18 +22,15 @@ var config = {
 var packages = ['pathto/package.json'];
 
 
-gitLabel(config, packages, function(err, res) {
-  if (err) {
-    throw err;
-  }
- console.log(res); //=> Successfully created x labels
-});
+gitLabel(config, packages)
+  .then(console.log)  //=> success message
+  .catch(console.log) //=> error message
 ```
 
 
 #API
 
-### gitLabel( config, packages, callback )
+### gitLabel( config, packages )
 
 Name         | Type     | Argument     | Default | Description
 -------------|----------|--------------|---------|------------
@@ -43,17 +40,10 @@ config.token | `string` | `<required>` | `null`  | the api token to use
 config.repo  | `string` | `<required>` | `null`  | the git repo to add labels to
 packages     | `array`  | `<required>` | `null`  | the path(s) to the package files to use
 
-#### callback( error, response )
-
-Name     | Type       | Argument     | Description
----------|------------|--------------|------------
-error    | `error`    | `<required>` | any errors that may have occured.
-response | `string`   | `<required>` | success message.
-
 
 ## Developing
 
-[git-label](https://github.com/git-label) is built using **ES6**. Run the following task to compile the `src/` into `dist/`.
+[git-label](https://github.com/git-label/git-label) is built using **ES6**. Run the following task to compile the `src/` into `dist/`.
 
 ```bash
 npm run build

@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -13,19 +13,16 @@ exports.configure = configure;
  * @param {String} server.api the api endpoint to connect to
  * @param {String} server.token the api token to use
  * @param {String} server.repo the git repo to manipulate
- * @return {Promise} propelly structured server configuration object
+ * @return {Object} structured server configuration object
  */
 function configure(_ref) {
-  var _ref$api = _ref.api;
-  var api = _ref$api === undefined ? 'https://api.github.com' : _ref$api;
+  var api = _ref.api;
   var token = _ref.token;
   var repo = _ref.repo;
 
-  return new Promise(function (resolve, reject) {
-    resolve({
-      api: api,
-      token: token,
-      repo: 'repos/' + repo
-    });
-  });
+  return {
+    api: api,
+    token: token,
+    repo: "repos/" + repo
+  };
 }
