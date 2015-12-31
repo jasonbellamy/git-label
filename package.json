@@ -1,7 +1,7 @@
 {
   "name": "git-label",
   "description": "Automates and simplifies the creation of labels for GitHub repositories",
-  "version": "2.0.2",
+  "version": "3.0.1",
   "homepage": "https://github.com/jasonbellamy",
   "author": {
     "name": "Jason Bellamy",
