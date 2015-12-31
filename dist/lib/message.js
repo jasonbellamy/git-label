@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", {
 exports.successMessage = successMessage;
 exports.errorMessage = errorMessage;
 /**
- * Formats and logs a success message
+ * Formats and returns a success message
  *
  * @name successMessage
  * @function
@@ -18,7 +18,7 @@ function successMessage(response) {
 }
 
 /**
- * Formats and logs a error message
+ * Logs and returns an error message
  *
  * @name errorMessage
  * @function
@@ -26,5 +26,6 @@ function successMessage(response) {
  * @return {String} error message
  */
 function errorMessage(response) {
+  console.log(response);
   return response;
 }

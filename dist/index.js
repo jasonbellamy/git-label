@@ -22,16 +22,10 @@ var _message = require('./lib/message');
  * @param {String} server.token the api token to use
  * @param {String} server.repo the git repo to manipulate
  * @param {Array} packages array of paths to package files
- * @param {Function} cb callback
+ * @return {Promise}
  */
-function gitLabel(server, packages, cb) {
-  return (0, _config.configure)(server).then(function (server) {
-    return (0, _package.getPackages)(packages).then(_label.createLabels.bind(null, server)).then(function (message) {
-      cb(null, (0, _message.successMessage)(message));
-    });
-  }).catch(function (message) {
-    cb((0, _message.errorMessage)(message));
-  });
+function gitLabel(server, packages) {
+  return (0, _package.getPackages)(packages).then(_label.createLabels.bind(null, (0, _config.configure)(server))).then(_message.successMessage).catch(_message.errorMessage);
 }
 
 exports.default = gitLabel;

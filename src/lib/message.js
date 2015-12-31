@@ -1,5 +1,5 @@
 /**
- * Formats and logs a success message
+ * Formats and returns a success message
  *
  * @name successMessage
  * @function
@@ -11,7 +11,7 @@ export function successMessage(response) {
 }
 
 /**
- * Formats and logs a error message
+ * Logs and returns an error message
  *
  * @name errorMessage
  * @function
@@ -19,5 +19,6 @@ export function successMessage(response) {
  * @return {String} error message
  */
 export function errorMessage(response) {
+  console.log(response);
   return response;
 }
