@@ -25,6 +25,27 @@ export function createLabel({api, token, repo}, name, color) {
 }
 
 /**
+ * Sends a request to GitHub to delete a label
+ *
+ * @name deleteLabel
+ * @function
+ * @param {Object} server the server configuration object
+ * @param {String} server.api the api endpoint to connect to
+ * @param {String} server.token the api token to use
+ * @param {String} server.repo the git repo to manipulate
+ * @param {String} name the name of the label to delete
+ * @return {Promise}
+ */
+export function deleteLabel({api, token, repo}, name) {
+  return request({
+    headers: {'User-Agent': 'request', 'Authorization': `token ${token}`},
+    url: `${api}/${repo}/labels/${name}`,
+    method: 'DELETE',
+    json: true
+  });
+}
+
+/**
  * Retrieves a list of labels from Github
  *
  * @name getLabels
@@ -76,4 +97,22 @@ export function createLabels(server, labels) {
     .map(formatLabel)
     .map(({name, color}) => createLabel(server, name, color))
   );
+}
+
+/**
+ * Deletes all of the current labels associated with the GitHub repo
+ *
+ * @name deleteLabels
+ * @function
+ * @param {Object} server the server configuration object
+ * @param {String} server.api the api endpoint to connect to
+ * @param {String} server.token the api token to use
+ * @param {String} server.repo the git repo to manipulate
+ * @return {Promise}
+ */
+export function deleteLabels(server) {
+  return getLabels(server)
+    .then(labels => {
+      return Promise.all(labels.map(({name}) => deleteLabel(server, name)));
+    });
 }
