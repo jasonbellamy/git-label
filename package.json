@@ -2,7 +2,7 @@
   "name": "git-label",
   "description": "Automates and simplifies the creation of labels for GitHub repositories",
   "version": "2.0.0",
-  "homepage": "https://github.com/git-label",
+  "homepage": "https://github.com/jasonbellamy",
   "author": {
     "name": "Jason Bellamy",
     "email": "j@sonbellamy.com",
@@ -10,10 +10,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/git-label/git-label.git"
+    "url": "https://github.com/jasonbellamy/git-label.git"
   },
   "bugs": {
-    "url": "https://github.com/git-label/git-label/issues"
+    "url": "https://github.com/jasonbellamy/git-label/issues"
   },
   "license": "MIT",
   "main": "dist/index",

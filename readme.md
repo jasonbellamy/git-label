@@ -1,4 +1,4 @@
-# git-label [![Build Status](https://travis-ci.org/git-label/git-label.svg)](https://travis-ci.org/git-label/git-label)
+# git-label [![Build Status](https://travis-ci.org/jasonbellamy/git-label.svg)](https://travis-ci.org/jasonbellamy/git-label)
 
 > Automates and simplifies the creation of labels for GitHub repositories
 
@@ -43,7 +43,7 @@ packages     | `array`  | `<required>` | `null`  | the path(s) to the package fi
 
 ## Developing
 
-[git-label](https://github.com/git-label/git-label) is built using **ES6**. Run the following task to compile the `src/` into `dist/`.
+[git-label](https://github.com/jasonbellamy/git-label) is built using **ES6**. Run the following task to compile the `src/` into `dist/`.
 
 ```bash
 npm run build
