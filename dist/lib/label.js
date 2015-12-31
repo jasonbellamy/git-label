@@ -4,9 +4,11 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.createLabel = createLabel;
+exports.deleteLabel = deleteLabel;
 exports.getLabels = getLabels;
 exports.formatLabel = formatLabel;
 exports.createLabels = createLabels;
+exports.deleteLabels = deleteLabels;
 
 var _request = require('../lib/request');
 
@@ -42,6 +44,31 @@ function createLabel(_ref, name, color) {
 }
 
 /**
+ * Sends a request to GitHub to delete a label
+ *
+ * @name deleteLabel
+ * @function
+ * @param {Object} server the server configuration object
+ * @param {String} server.api the api endpoint to connect to
+ * @param {String} server.token the api token to use
+ * @param {String} server.repo the git repo to manipulate
+ * @param {String} name the name of the label to delete
+ * @return {Promise}
+ */
+function deleteLabel(_ref2, name) {
+  var api = _ref2.api;
+  var token = _ref2.token;
+  var repo = _ref2.repo;
+
+  return (0, _request2.default)({
+    headers: { 'User-Agent': 'request', 'Authorization': 'token ' + token },
+    url: api + '/' + repo + '/labels/' + name,
+    method: 'DELETE',
+    json: true
+  });
+}
+
+/**
  * Retrieves a list of labels from Github
  *
  * @name getLabels
@@ -52,10 +79,10 @@ function createLabel(_ref, name, color) {
  * @param {String} server.repo the git repo to manipulate
  * @return {Promise}
  */
-function getLabels(_ref2) {
-  var api = _ref2.api;
-  var token = _ref2.token;
-  var repo = _ref2.repo;
+function getLabels(_ref3) {
+  var api = _ref3.api;
+  var token = _ref3.token;
+  var repo = _ref3.repo;
 
   return (0, _request2.default)({
     headers: { 'User-Agent': 'request', 'Authorization': 'token ' + token },
@@ -75,10 +102,10 @@ function getLabels(_ref2) {
  * @param {String} type the type of the label
  * @return {Object} a properly formated label object that can be sent to GitHub
  */
-function formatLabel(_ref3) {
-  var name = _ref3.name;
-  var color = _ref3.color;
-  var type = _ref3.type;
+function formatLabel(_ref4) {
+  var name = _ref4.name;
+  var color = _ref4.color;
+  var type = _ref4.type;
 
   return { name: type + ': ' + name, color: color };
 }
@@ -96,9 +123,29 @@ function formatLabel(_ref3) {
  * @return {Promise}
  */
 function createLabels(server, labels) {
-  return Promise.all(labels.map(formatLabel).map(function (_ref4) {
-    var name = _ref4.name;
-    var color = _ref4.color;
+  return Promise.all(labels.map(formatLabel).map(function (_ref5) {
+    var name = _ref5.name;
+    var color = _ref5.color;
     return createLabel(server, name, color);
   }));
+}
+
+/**
+ * Deletes all of the current labels associated with the GitHub repo
+ *
+ * @name deleteLabels
+ * @function
+ * @param {Object} server the server configuration object
+ * @param {String} server.api the api endpoint to connect to
+ * @param {String} server.token the api token to use
+ * @param {String} server.repo the git repo to manipulate
+ * @return {Promise}
+ */
+function deleteLabels(server) {
+  return getLabels(server).then(function (labels) {
+    return Promise.all(labels.map(function (_ref6) {
+      var name = _ref6.name;
+      return deleteLabel(server, name);
+    }));
+  });
 }

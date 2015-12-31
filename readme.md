@@ -21,8 +21,13 @@ var config = {
 
 var packages = ['pathto/package.json'];
 
+// remove all labels from a repo
+gitLabel.remove(config)
+  .then(console.log)  //=> success message
+  .catch(console.log) //=> error message
 
-gitLabel(config, packages)
+// add labels to a repo
+gitLabel.add(config, packages)
   .then(console.log)  //=> success message
   .catch(console.log) //=> error message
 ```
@@ -30,7 +35,7 @@ gitLabel(config, packages)
 
 #API
 
-### gitLabel( config, packages )
+### add( config, packages )
 
 Name         | Type     | Argument     | Default | Description
 -------------|----------|--------------|---------|------------
@@ -39,6 +44,15 @@ config.api   | `string` | `<required>` | `null`  | the api endpoint to connect t
 config.token | `string` | `<required>` | `null`  | the api token to use
 config.repo  | `string` | `<required>` | `null`  | the git repo to add labels to
 packages     | `array`  | `<required>` | `null`  | the path(s) to the package files to use
+
+### remove( config )
+
+Name         | Type     | Argument     | Default | Description
+-------------|----------|--------------|---------|------------
+config       | `object` | `<required>` | `null`  | the server configuration object
+config.api   | `string` | `<required>` | `null`  | the api endpoint to connect to
+config.token | `string` | `<required>` | `null`  | the api token to use
+config.repo  | `string` | `<required>` | `null`  | the git repo to add labels to
 
 
 ## Developing

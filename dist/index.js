@@ -3,6 +3,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+exports.add = add;
+exports.remove = remove;
 
 var _config = require('./lib/config');
 
@@ -10,12 +12,12 @@ var _label = require('./lib/label');
 
 var _package = require('./lib/package');
 
-var _message = require('./lib/message');
+var _handlers = require('./lib/handlers');
 
 /**
  * Automates and simplifies the creation of labels for GitHub repositories
  *
- * @name gitLabel
+ * @name add
  * @function
  * @param {Object} server the server configuration object
  * @param {String} server.api the api endpoint to connect to
@@ -24,8 +26,22 @@ var _message = require('./lib/message');
  * @param {Array} packages array of paths to package files
  * @return {Promise}
  */
-function gitLabel(server, packages) {
-  return (0, _package.getPackages)(packages).then(_label.createLabels.bind(null, (0, _config.configure)(server))).then(_message.successMessage).catch(_message.errorMessage);
+function add(server, packages) {
+  return (0, _package.getPackages)(packages).then(_label.createLabels.bind(null, (0, _config.configure)(server))).then(_handlers.createSuccessHandler).catch(_handlers.errorHandler);
 }
 
-exports.default = gitLabel;
+/**
+ * Removes all of the current labels associated with the GitHub repo
+ *
+ * @name remove
+ * @function
+ * @param {Object} server the server configuration object
+ * @param {String} server.api the api endpoint to connect to
+ * @param {String} server.token the api token to use
+ * @param {String} server.repo the git repo to manipulate
+ * @param {Array} packages array of paths to package files
+ * @return {Promise}
+ */
+function remove(server) {
+  return (0, _label.deleteLabels)((0, _config.configure)(server)).then(_handlers.deleteSuccessHandler).catch(_handlers.errorHandler);
+}
