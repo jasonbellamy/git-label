@@ -21,12 +21,12 @@ var config = {
 
 var packages = ['pathto/package.json'];
 
-// remove all labels from a repo
+// remove specified labels from a repo
 gitLabel.remove(config, packages)
   .then(console.log)  //=> success message
   .catch(console.log) //=> error message
 
-// add labels to a repo
+// add specified labels to a repo
 gitLabel.add(config, packages)
   .then(console.log)  //=> success message
   .catch(console.log) //=> error message
