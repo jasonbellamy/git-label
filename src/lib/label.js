@@ -110,9 +110,10 @@ export function createLabels(server, labels) {
  * @param {String} server.repo the git repo to manipulate
  * @return {Promise}
  */
-export function deleteLabels(server) {
-  return getLabels(server)
-    .then(labels => {
-      return Promise.all(labels.map(({name}) => deleteLabel(server, name)));
-    });
+export function deleteLabels(server, labels) {
+  return Promise.all(
+    labels
+    .map(formatLabel)
+    .map(({name, color}) => deleteLabel(server, name))
+  );
 }

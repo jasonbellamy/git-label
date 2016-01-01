@@ -31,7 +31,7 @@ function add(server, packages) {
 }
 
 /**
- * Removes all of the current labels associated with the GitHub repo
+ * Removes all of the specified labels associated with the GitHub repo
  *
  * @name remove
  * @function
@@ -42,6 +42,6 @@ function add(server, packages) {
  * @param {Array} packages array of paths to package files
  * @return {Promise}
  */
-function remove(server) {
-  return (0, _label.deleteLabels)((0, _config.configure)(server)).then(_handlers.deleteSuccessHandler).catch(_handlers.errorHandler);
+function remove(server, packages) {
+  return (0, _package.getPackages)(packages).then(_label.deleteLabels.bind(null, (0, _config.configure)(server))).then(_handlers.deleteSuccessHandler).catch(_handlers.errorHandler);
 }
