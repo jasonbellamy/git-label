@@ -141,11 +141,10 @@ function createLabels(server, labels) {
  * @param {String} server.repo the git repo to manipulate
  * @return {Promise}
  */
-function deleteLabels(server) {
-  return getLabels(server).then(function (labels) {
-    return Promise.all(labels.map(function (_ref6) {
-      var name = _ref6.name;
-      return deleteLabel(server, name);
-    }));
-  });
+function deleteLabels(server, labels) {
+  return Promise.all(labels.map(formatLabel).map(function (_ref6) {
+    var name = _ref6.name;
+    var color = _ref6.color;
+    return deleteLabel(server, name);
+  }));
 }
