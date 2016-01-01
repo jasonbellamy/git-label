@@ -68,6 +68,7 @@ npm run build
 ## Related
 
 - [git-label-cli](https://github.com/jasonbellamy/git-label-cli) - CLI for this module
+- [git-label-packages](https://github.com/jasonbellamy/git-label-packages) - Default label packages for this module
 
 
 ## Contributing
