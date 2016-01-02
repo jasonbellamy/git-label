@@ -40,7 +40,7 @@ describe('Lib: Package', () => {
 
     it('should eventually return data from a file', () => {
       const promise  = readFile('test/fixtures/package_one.json');
-      const expected = [ { "type": "Type", "name": "Bug", "color": "fff" } ];
+      const expected = [ { "name": "Type: Bug", "color": "fff" } ];
       return assert.eventually.deepEqual(promise, expected);
     });
   });
