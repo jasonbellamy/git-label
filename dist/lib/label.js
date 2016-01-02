@@ -105,7 +105,7 @@ function formatLabel(_ref4) {
   var name = _ref4.name;
   var color = _ref4.color;
 
-  return { name: name, color: color };
+  return { name: name, color: color.replace('#', '') };
 }
 
 /**

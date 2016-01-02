@@ -75,7 +75,7 @@ export function getLabels({api, token, repo}) {
  * @return {Object} a properly formated label object that can be sent to GitHub
  */
 export function formatLabel({name, color}) {
-  return {name, color};
+  return {name, color: color.replace('#', '')};
 }
 
 /**
