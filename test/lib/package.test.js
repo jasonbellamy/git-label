@@ -20,8 +20,8 @@ describe('Lib: Package', () => {
     it('should eventually concatenate and return data from multiple file(s)', () => {
       const promise = getPackages(['test/fixtures/package_one.json', 'test/fixtures/package_two.json']);
       const expected = [
-        { "type": "Type", "name": "Bug", "color": "fff" },
-        { "type": "Status", "name": "Abandoned", "color": "000" }
+        { "name": "Type: Bug", "color": "fff" },
+        { "name": "Status: Abandoned", "color": "000" }
       ];
       return assert.eventually.deepEqual(promise, expected);
     });

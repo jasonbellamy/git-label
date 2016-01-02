@@ -99,15 +99,13 @@ function getLabels(_ref3) {
  * @function
  * @param {String} name the name of the label
  * @param {String} color the hexidecimal color of the label
- * @param {String} type the type of the label
  * @return {Object} a properly formated label object that can be sent to GitHub
  */
 function formatLabel(_ref4) {
   var name = _ref4.name;
   var color = _ref4.color;
-  var type = _ref4.type;
 
-  return { name: type + ': ' + name, color: color };
+  return { name: name, color: color };
 }
 
 /**
