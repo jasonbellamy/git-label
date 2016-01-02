@@ -9,7 +9,7 @@ describe('Lib: Label', () => {
   describe('formatLabel', () => {
     it('should return a properly formatted object', () => {
       const expected = {name: 'Type: Accepted', color: 'fff' };
-      const actual   = formatLabel({ name: 'Accepted', color: 'fff', type: 'Type'});
+      const actual   = formatLabel({ name: 'Type: Accepted', color: 'fff' });
       return assert.deepEqual(expected, actual);
     });
   })

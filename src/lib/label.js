@@ -72,11 +72,10 @@ export function getLabels({api, token, repo}) {
  * @function
  * @param {String} name the name of the label
  * @param {String} color the hexidecimal color of the label
- * @param {String} type the type of the label
  * @return {Object} a properly formated label object that can be sent to GitHub
  */
-export function formatLabel({name, color, type}) {
-  return {name: `${type}: ${name}`, color};
+export function formatLabel({name, color}) {
+  return {name, color};
 }
 
 /**
