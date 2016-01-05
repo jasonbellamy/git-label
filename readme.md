@@ -47,13 +47,13 @@ packages     | `array`  | `<required>` | `null`           | the path(s) to the p
 
 ### remove( config, packages )
 
-Name         | Type     | Argument     | Default | Description
--------------|----------|--------------|---------|------------
-config       | `object` | `<required>` | `null`  | the server configuration object
-config.api   | `string` | `<required>` | `null`  | the api endpoint to connect to
-config.token | `string` | `<required>` | `null`  | the api token to use
-config.repo  | `string` | `<required>` | `null`  | the git repo to add labels to
-packages     | `array`  | `<required>` | `null`  | the path(s) to the package files to use
+Name         | Type     | Argument     | Default          | Description
+-------------|----------|--------------|------------------|------------
+config       | `object` | `<required>` | `null`           | the server configuration object
+config.api   | `string` | `<optional>` | `api.github.com` | the api endpoint to connect to
+config.token | `string` | `<required>` | `null`           | the api token to use
+config.repo  | `string` | `<required>` | `null`           | the git repo to add labels to
+packages     | `array`  | `<required>` | `null`           | the path(s) to the package files to use
 
 
 ## Developing
