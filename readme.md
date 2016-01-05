@@ -19,7 +19,7 @@ var config = {
   token : 'yoursupersecretapitoken'
 };
 
-var packages = ['pathto/package.json'];
+var packages = ['path/to/labels.json'];
 
 // remove specified labels from a repo
 gitLabel.remove(config, packages)
