@@ -1,6 +1,5 @@
 import {configure} from './lib/config';
 import {createLabels, deleteLabels} from './lib/label';
-import {getPackages} from './lib/package';
 import {createSuccessHandler, deleteSuccessHandler, errorHandler} from './lib/handlers';
 
 
@@ -13,12 +12,11 @@ import {createSuccessHandler, deleteSuccessHandler, errorHandler} from './lib/ha
  * @param {String} server.api the api endpoint to connect to
  * @param {String} server.token the api token to use
  * @param {String} server.repo the git repo to manipulate
- * @param {Array} packages array of paths to package files
+ * @param {Array} labels array of label objects
  * @return {Promise}
  */
-export function add(server, packages) {
-  return getPackages(packages)
-    .then(createLabels.bind(null, configure(server)))
+export function add(server, labels) {
+  return createLabels(configure(server), labels)
     .then(createSuccessHandler)
     .catch(errorHandler);
 }
@@ -32,12 +30,11 @@ export function add(server, packages) {
  * @param {String} server.api the api endpoint to connect to
  * @param {String} server.token the api token to use
  * @param {String} server.repo the git repo to manipulate
- * @param {Array} packages array of paths to package files
+ * @param {Array} labels array of label objects
  * @return {Promise}
  */
-export function remove(server, packages) {
-  return getPackages(packages)
-    .then(deleteLabels.bind(null, configure(server)))
+export function remove(server, labels) {
+  return deleteLabels(configure(server), labels)
     .then(deleteSuccessHandler)
     .catch(errorHandler);
 }

@@ -15,19 +15,22 @@ var gitLabel = require('git-label');
 
 var config = {
   api   : 'https://api.github.com',
-  repo  : 'username/repo'
+  repo  : 'username/repo',
   token : 'yoursupersecretapitoken'
 };
 
-var packages = ['path/to/labels.json'];
+var labels = [
+  { "name": "bug", "color": "#fc2929" },
+  { "name": "duplicate", "color": "#cccccc" }
+];
 
 // remove specified labels from a repo
-gitLabel.remove(config, packages)
+gitLabel.remove(config, labels)
   .then(console.log)  //=> success message
   .catch(console.log) //=> error message
 
 // add specified labels to a repo
-gitLabel.add(config, packages)
+gitLabel.add(config, labels)
   .then(console.log)  //=> success message
   .catch(console.log) //=> error message
 ```
@@ -35,25 +38,25 @@ gitLabel.add(config, packages)
 
 #API
 
-### add( config, packages )
+### add( config, labels )
 
-Name         | Type     | Argument     | Default          | Description
--------------|----------|--------------|------------------|------------
-config       | `object` | `<required>` | `null`           | the server configuration object
-config.api   | `string` | `<optional>` | `api.github.com` | the api endpoint to connect to
-config.token | `string` | `<required>` | `null`           | the api token to use
-config.repo  | `string` | `<required>` | `null`           | the git repo to add labels to
-packages     | `array`  | `<required>` | `null`           | the path(s) to the package files to use
+Name         | Type     | Argument     | Default | Description
+-------------|----------|--------------|---------|------------
+config       | `object` | `<required>` | `null`  | the server configuration object
+config.api   | `string` | `<required>` | `null`  | the api endpoint to connect to
+config.token | `string` | `<required>` | `null`  | the api token to use
+config.repo  | `string` | `<required>` | `null`  | the git repo to add labels to
+labels       | `array`  | `<required>` | `null`  | the array of label objects
 
-### remove( config, packages )
+### remove( config, labels )
 
-Name         | Type     | Argument     | Default          | Description
--------------|----------|--------------|------------------|------------
-config       | `object` | `<required>` | `null`           | the server configuration object
-config.api   | `string` | `<optional>` | `api.github.com` | the api endpoint to connect to
-config.token | `string` | `<required>` | `null`           | the api token to use
-config.repo  | `string` | `<required>` | `null`           | the git repo to add labels to
-packages     | `array`  | `<required>` | `null`           | the path(s) to the package files to use
+Name         | Type     | Argument     | Default | Description
+-------------|----------|--------------|---------|------------
+config       | `object` | `<required>` | `null`  | the server configuration object
+config.api   | `string` | `<required>` | `null`  | the api endpoint to connect to
+config.token | `string` | `<required>` | `null`  | the api token to use
+config.repo  | `string` | `<required>` | `null`  | the git repo to add labels to
+labels       | `array`  | `<required>` | `null`  | the array of label objects
 
 
 ## Developing

@@ -10,8 +10,6 @@ var _config = require('./lib/config');
 
 var _label = require('./lib/label');
 
-var _package = require('./lib/package');
-
 var _handlers = require('./lib/handlers');
 
 /**
@@ -23,11 +21,11 @@ var _handlers = require('./lib/handlers');
  * @param {String} server.api the api endpoint to connect to
  * @param {String} server.token the api token to use
  * @param {String} server.repo the git repo to manipulate
- * @param {Array} packages array of paths to package files
+ * @param {Array} labels array of label objects
  * @return {Promise}
  */
-function add(server, packages) {
-  return (0, _package.getPackages)(packages).then(_label.createLabels.bind(null, (0, _config.configure)(server))).then(_handlers.createSuccessHandler).catch(_handlers.errorHandler);
+function add(server, labels) {
+  return (0, _label.createLabels)((0, _config.configure)(server), labels).then(_handlers.createSuccessHandler).catch(_handlers.errorHandler);
 }
 
 /**
@@ -39,9 +37,9 @@ function add(server, packages) {
  * @param {String} server.api the api endpoint to connect to
  * @param {String} server.token the api token to use
  * @param {String} server.repo the git repo to manipulate
- * @param {Array} packages array of paths to package files
+ * @param {Array} labels array of label objects
  * @return {Promise}
  */
-function remove(server, packages) {
-  return (0, _package.getPackages)(packages).then(_label.deleteLabels.bind(null, (0, _config.configure)(server))).then(_handlers.deleteSuccessHandler).catch(_handlers.errorHandler);
+function remove(server, labels) {
+  return (0, _label.deleteLabels)((0, _config.configure)(server), labels).then(_handlers.deleteSuccessHandler).catch(_handlers.errorHandler);
 }
