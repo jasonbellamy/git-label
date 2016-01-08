@@ -1,4 +1,5 @@
 import {configure} from './lib/config';
+import {findPackages, readPackages} from './lib/package';
 import {createLabels, deleteLabels} from './lib/label';
 import {createSuccessHandler, deleteSuccessHandler, errorHandler} from './lib/handlers';
 
@@ -37,4 +38,16 @@ export function remove(server, labels) {
   return deleteLabels(configure(server), labels)
     .then(deleteSuccessHandler)
     .catch(errorHandler);
+}
+
+/**
+ * Finds and gets the data from label packages
+ *
+ * @name find
+ * @function
+ * @param {String} path a globbing pattern to the label packages
+ * @return {Promise} an array of label objects
+ */
+export function find(glob) {
+  return findPackages(path).then(readPackages);
 }

@@ -29,6 +29,7 @@
     "postpublish": "git push && git push --tag"
   },
   "dependencies": {
+    "glob": "^6.0.3",
     "lineder": "^0.1.1",
     "request": "^2.67.0"
   },

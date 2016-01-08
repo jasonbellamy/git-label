@@ -58,6 +58,12 @@ config.token | `string` | `<required>` | `null`  | the api token to use
 config.repo  | `string` | `<required>` | `null`  | the git repo to add labels to
 labels       | `array`  | `<required>` | `null`  | the array of label objects
 
+### find( pattern )
+
+Name         | Type     | Argument     | Default | Description
+-------------|----------|--------------|---------|------------
+pattern      | `string` | `<required>` | `null`  | the [globbing](https://github.com/isaacs/node-glob) pattern to the label packages
+
 
 ## Developing
 
