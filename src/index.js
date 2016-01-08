@@ -49,5 +49,5 @@ export function remove(server, labels) {
  * @return {Promise} an array of label objects
  */
 export function find(glob) {
-  return findPackages(path).then(readPackages);
+  return findPackages(glob).then(readPackages);
 }

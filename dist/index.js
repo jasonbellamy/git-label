@@ -56,5 +56,5 @@ function remove(server, labels) {
  * @return {Promise} an array of label objects
  */
 function find(glob) {
-  return (0, _package.findPackages)(path).then(_package.readPackages);
+  return (0, _package.findPackages)(glob).then(_package.readPackages);
 }
