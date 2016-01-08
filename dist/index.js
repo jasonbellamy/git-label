@@ -5,8 +5,11 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.add = add;
 exports.remove = remove;
+exports.find = find;
 
 var _config = require('./lib/config');
+
+var _package = require('./lib/package');
 
 var _label = require('./lib/label');
 
@@ -42,4 +45,16 @@ function add(server, labels) {
  */
 function remove(server, labels) {
   return (0, _label.deleteLabels)((0, _config.configure)(server), labels).then(_handlers.deleteSuccessHandler).catch(_handlers.errorHandler);
+}
+
+/**
+ * Finds and gets the data from label packages
+ *
+ * @name find
+ * @function
+ * @param {String} path a globbing pattern to the label packages
+ * @return {Promise} an array of label objects
+ */
+function find(glob) {
+  return (0, _package.findPackages)(path).then(_package.readPackages);
 }
