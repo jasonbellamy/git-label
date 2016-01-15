@@ -62,7 +62,7 @@ labels       | `array`  | `<required>` | `null`  | the array of label objects
 
 Name         | Type     | Argument     | Default | Description
 -------------|----------|--------------|---------|------------
-pattern      | `string` | `<required>` | `null`  | the [globbing](https://github.com/isaacs/node-glob) pattern to the label packages
+pattern      | `string` | `<required>` | `null`  | the [globbing](https://github.com/isaacs/node-glob) pattern to the [label packages](https://github.com/jasonbellamy/git-label-packages)
 
 
 ## Developing
