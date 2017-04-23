@@ -36,7 +36,7 @@ gitLabel.add(config, labels)
 ```
 
 
-#API
+# API
 
 ### add( config, labels )
 
