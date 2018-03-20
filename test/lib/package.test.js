@@ -21,7 +21,8 @@ describe('Lib: Package', () => {
       const promise = readPackages(['test/fixtures/package_one.json', 'test/fixtures/package_two.json']);
       const expected = [
         { "name": "Type: Bug", "color": "#fff" },
-        { "name": "Status: Abandoned", "color": "#000" }
+        { "name": "Status: Abandoned", "color": "#000" },
+        { "name": ":fire: Priority: Critical", "color": "#e11d21", "description": "Needs to be resolved asap" }
       ];
       return assert.eventually.deepEqual(promise, expected);
     });

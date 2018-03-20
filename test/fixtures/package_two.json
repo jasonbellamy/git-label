@@ -1,3 +1,4 @@
 [
-  { "name": "Status: Abandoned", "color": "#000" }
+  { "name": "Status: Abandoned", "color": "#000" },
+  { "name": ":fire: Priority: Critical", "color": "#e11d21", "description": "Needs to be resolved asap" }
 ]
