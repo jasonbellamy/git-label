@@ -75,7 +75,7 @@ export function getLabels({api, token, repo}) {
  * @return {Object} a properly formated label object that can be sent to GitHub
  */
 export function formatLabel({name, color}) {
-  return {name, color: color.replace('#', '')};
+  return !color ? {name} : {name, color: color.replace('#', '')};
 }
 
 /**
@@ -113,6 +113,6 @@ export function deleteLabels(server, labels) {
   return Promise.all(
     labels
     .map(formatLabel)
-    .map(({name, color}) => deleteLabel(server, name))
+    .map(({name}) => deleteLabel(server, name))
   );
 }
