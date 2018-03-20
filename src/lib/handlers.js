@@ -32,5 +32,5 @@ export function deleteSuccessHandler(response) {
  */
 export function errorHandler(response) {
   console.log(response);
-  return response;
+  throw response;
 }
