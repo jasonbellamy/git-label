@@ -1,3 +1,5 @@
+import { join } from 'path';
+
 /**
  * Configures and returns an object with the git server settings
  *
@@ -12,7 +14,7 @@
 export function configure({api, token, repo}) {
   return {
     api,
-    repo: `repos/${repo}`,
+    repo: join(repos, repo),
     token
   };
 }
