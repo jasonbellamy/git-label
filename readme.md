@@ -33,6 +33,11 @@ gitLabel.remove(config, labels)
 gitLabel.add(config, labels)
   .then(console.log)  //=> success message
   .catch(console.log) //=> error message
+
+  //get the labels of a repo
+gitLabel.get(config)
+  .then(console.log)  //=> success data
+  .catch(console.log) //=> error message
 ```
 
 
@@ -64,6 +69,14 @@ Name         | Type     | Argument     | Default | Description
 -------------|----------|--------------|---------|------------
 pattern      | `string` | `<required>` | `null`  | the [globbing](https://github.com/isaacs/node-glob) pattern to the [label packages](https://github.com/jasonbellamy/git-label-packages)
 
+### get( config )
+
+Name         | Type     | Argument     | Default | Description
+-------------|----------|--------------|---------|------------
+config       | `object` | `<required>` | `null`  | the server configuration object
+config.api   | `string` | `<required>` | `null`  | the api endpoint to connect to
+config.token | `string` | `<required>` | `null`  | the api token to use
+config.repo  | `string` | `<required>` | `null`  | the git repo to add labels to
 
 ## Developing
 
