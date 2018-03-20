@@ -21,7 +21,8 @@ var config = {
 
 var labels = [
   { "name": "bug", "color": "#fc2929" },
-  { "name": "duplicate", "color": "#cccccc" }
+  { "name": "duplicate", "color": "#cccccc" },
+  { "name": ":fire: Priority: Critical", "color": "#e11d21", "description": "Needs to be resolved asap" }
 ];
 
 // remove specified labels from a repo
