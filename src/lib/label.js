@@ -12,13 +12,14 @@ import request from '../lib/request';
  * @param {String} server.repo the git repo to manipulate
  * @param {String} name the name of the label
  * @param {String} color the hexidecimal color of the label
+ * @param {String} description the description of the label
  * @return {Promise}
  */
-export function createLabel({api, token, repo}, name, color) {
+export function createLabel({api, token, repo}, name, color, description) {
   return request({
-    headers: {'User-Agent': 'request', 'Authorization': `token ${token}`},
+    headers: {'User-Agent': 'request', 'Authorization': `token ${token}`, 'Accept': 'text/html, application/vnd.github.symmetra-preview+json'},
     url: `${api}/${repo}/labels`,
-    form: JSON.stringify({name, color}),
+    form: JSON.stringify({name, color, description}),
     method: 'POST',
     json: true
   });
@@ -72,10 +73,11 @@ export function getLabels({api, token, repo}) {
  * @function
  * @param {String} name the name of the label
  * @param {String} color the hexidecimal color of the label
+ * @param {String} description the description of the label
  * @return {Object} a properly formated label object that can be sent to GitHub
  */
-export function formatLabel({name, color}) {
-  return {name, color: color.replace('#', '')};
+export function formatLabel({name, color, description}) {
+  return {name, description, color: color.replace('#', '')};
 }
 
 /**
@@ -94,7 +96,7 @@ export function createLabels(server, labels) {
   return Promise.all(
     labels
     .map(formatLabel)
-    .map(({name, color}) => createLabel(server, name, color))
+    .map(({name, color, description}) => createLabel(server, name, color, description))
   );
 }
 
