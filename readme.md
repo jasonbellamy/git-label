@@ -20,8 +20,8 @@ var config = {
 };
 
 var labels = [
-  { "name": "bug", "color": "#fc2929" },
-  { "name": "duplicate", "color": "#cccccc" }
+  { "name": "bug", "color": "#fc2929", "description": "Something isn't working" },
+  { "name": "duplicate", "color": "#cccccc", "description": "This issue or pull request already exists" }
 ];
 
 // remove specified labels from a repo
