@@ -9,7 +9,7 @@
  * @param {String} server.repo the git repo to manipulate
  * @return {Object} structured server configuration object
  */
-export function configure({api, token, repo}) {
+export function configure({ api, token, repo }) {
   return {
     api,
     repo: `repos/${repo}`,
